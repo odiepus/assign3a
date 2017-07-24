@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/assign3a.dir/main.c.o  -o assign3a 
