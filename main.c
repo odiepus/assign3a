@@ -15,6 +15,7 @@ int main() {
 
     unsigned long x;
     int bits[4096][64];
+    char pAddress[4096][16];
 
     printf("output:\n");
 
@@ -22,6 +23,7 @@ int main() {
     int p = 0;
     int i = 0;
     int d = 0;
+    int z = 0;
     size_t v;
     while((v = fread(&x, sizeof(x), 1, fp)) > 0){
 
@@ -68,10 +70,24 @@ int main() {
         for(int l = 0; l < 64; l++){
             printf("%d", bits[i][l]);
         }
+        int t = 63;
+        int w = 0;
+        char hex[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        for(int s = 15; s >= 0; s--){
+            int u = t;
+            for(; t >= u - 4; t--){
+                if(bits[i][t] == 1){
+                    z += (int) pow(2, w);
+                }
+                w++;
+            }
+            pAddress[i][s] = hex[z];
+        }
 
         i += (int) v;
         p = 0;
         d = 0;
+        z = 0;
         printf("\n\n");
     }
 
